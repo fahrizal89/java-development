@@ -1,5 +1,15 @@
 # java-development
 
+Java SE (Java Standard Edition)
+
+Java SE contains all the base packages. Some of the base packages are written in Java and some are written in C/C++. The base packages are the fastest because there are no additional layers on top of their core functionality.
+
+Java EE (Java Enterprise Edition)
+
+Java EE is a set of specifications and the respective implementations are all built using Java SE base packages which happen to already contain everything required for any application. For example, for a web application, here is a Java SE Web Server and a Java SE Database.
+
+
+
 Java 5
 
 
