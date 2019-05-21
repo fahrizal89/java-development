@@ -2,14 +2,50 @@
 
 Java 5
 
-- Generics
+
 - Enhanced for Loop
+Simpler. Don't need define start to end
+```java
+String[] counts = { "one", "two", "three" };
+for (String str : counts) {
+  System.out.println(str);
+}
+```
 - Autoboxing/Unboxing
-- Typesafe Enums
-- Varargs
-- Static Import
-- Metadata (Annotations)
-- Instrumentation
+
+Can put primitive type values into collections
+```
+List list = new ArrayList();
+list.add(10);
+list.add(10.5);
+for (Object obj : list) {
+  System.out.println(obj);
+}
+```
+- Variable Length Argument List
+```
+exampleVariableLengthArgumentList("1");
+exampleVariableLengthArgumentList("1","2");
+exampleVariableLengthArgumentList("1","2","3");
+```
+```
+private void exampleVariableLengthArgumentList(String... parameters) {
+  for (String str : parameters) {
+    System.out.println("Paramters:-" + str);
+  }
+  System.out.println("");
+}
+```
+- Static import
+```
+import static java.lang.Math.abs;
+
+private void exampleStaticImport() {
+  System.out.println(abs(-100));
+}
+```
+
+
 
 Java 6
 
