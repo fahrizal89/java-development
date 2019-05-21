@@ -49,11 +49,25 @@ private void exampleStaticImport() {
 Java 6
 
 - Scripting Language Support
-- JDBC 4.0 API
-- Java Compiler API
-- Pluggable Annotations
-- Native PKI, Java GSS, Kerberos and LDAP support
-- Integrated Web Services
+
+```
+var aJavaString = new String('A Test String');
+var length = aJavaString.substring(7, 13);
+```
+- Enhanched SQL Execption
+```
+try{
+
+     // Some Database Access Code
+
+}catch(SQLException exception){
+
+    for(Throwable throwable: exception){
+        System.out.println(throwable.getMessage());
+
+    }
+}
+```
 
 Java 7
 - Diamond Syntax
@@ -151,3 +165,12 @@ High Nums sequential=97
 High Nums sequential=98
 High Nums sequential=99
 ```
+
+Java 9
+- Factory method for immutable list,map and set
+Make all immutable fields final. Value can be assigned only once.
+```
+List imutableList = List.of("one","two","three");
+```
+
+
