@@ -39,7 +39,7 @@ for (String str : counts) {
 }
 ```
 - Autoboxing/Unboxing
-Autoboxing : convert primitive type into wrapper oUnbject.
+Autoboxing : convert primitive type into wrapper object.
 Can put primitive type values into collections.
 
 example:
