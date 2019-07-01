@@ -1,3 +1,20 @@
+# How Java Actually works?
+*write once, run anywhere*
+
+Source Code --> ByteCode --> JVM --> Machine
+
+1. Source code
+Java Language written in file .java
+
+2. Compiler (JAVAC)
+Java has compiler name as javac which convert source code to intermediate code which is known as java bytecode. This java bytecode is not dependent on any platform that is if you compile your source code in windows platform by using javac compiler so you can run this code in any other platforms like linux , Mac.
+
+3. JVM (Java Virtual Machine)
+The bytecode verifier in the JVM first checks the bytecode then it is the JVM which is responsible to convert the bytecode to a machine understandable code
+
+4. Machine
+Machine code run in machine
+
 # java-development
 
 Java SE (Java Standard Edition)
@@ -175,6 +192,82 @@ High Nums sequential=97
 High Nums sequential=98
 High Nums sequential=99
 ```
+- Method Reference
+
+Method reference is used to refer method of functional interface. It is compact and easy form of lambda expression. Each time when you are using lambda expression to just referring a method, you can replace your lambda expression with method reference.
+
+a. Reference to a static method
+```
+interface Sayable{  
+    void say();  
+}  
+public class MethodReference {  
+    public static void saySomething(){  
+        System.out.println("Hello, this is static method.");  
+    }  
+    public static void main(String[] args) {  
+        // Referring static method  
+        Sayable sayable = MethodReference::saySomething;  
+        // Calling interface method  
+        sayable.say();  
+    }  
+}  
+```
+Output:
+```
+Hello, this is static method.
+```
+
+b. Reference to instance method
+```
+interface Sayable{  
+    void say();  
+}  
+
+public class InstanceMethodReference {  
+    public void saySomething(){  
+        System.out.println("Hello, this is non-static method.");  
+    }  
+    public static void main(String[] args) {  
+        InstanceMethodReference methodReference = new InstanceMethodReference(); // Creating object  
+        // Referring non-static method using reference  
+        Sayable sayable = methodReference::saySomething;  
+        // Calling interface method  
+        sayable.say();  
+        // Referring non-static method using anonymous object  
+        Sayable sayable2 = new InstanceMethodReference()::saySomething; // You can use anonymous object also  
+        // Calling interface method  
+        sayable2.say();  
+    }  
+} 
+```
+Output:
+```
+Hello, this is non-static method.
+Hello, this is non-static method.
+```
+
+c. Reference to a constructor
+```
+interface Messageable{  
+    Message getMessage(String msg);  
+}  
+class Message{  
+    Message(String msg){  
+        System.out.print(msg);  
+    }  
+}  
+public class ConstructorReference {  
+    public static void main(String[] args) {  
+        Messageable hello = Message::new;  
+        hello.getMessage("Hello");  
+    }  
+}  
+```
+Output:
+```
+Hello
+```
 
 Java 9
 - Factory method for immutable list,map and set
@@ -183,4 +276,65 @@ Make all immutable fields final. Value can be assigned only once.
 List imutableList = List.of("one","two","three");
 ```
 
+# Generics
+- The idea is to allow type (Integer, String, … etc and user defined types) to be a parameter to methods, classes and interfaces.
 
+1. Generic Class
+```
+class Test<T> { 
+    // An object of type T is declared 
+    T obj; 
+    
+    Test(T obj) {
+      this.obj = obj;  
+    }
+    
+    public T getObject()  { 
+      return this.obj; 
+    } 
+} 
+```
+```
+// Driver class to test above 
+class Main { 
+    public static void main (String[] args) 
+    { 
+        // instance of Integer type 
+        Test <Integer> iObj = new Test<Integer>(15); 
+        System.out.println(iObj.getObject()); 
+   
+        // instance of String type 
+        Test <String> sObj = new Test<String>("GeeksForGeeks"); 
+        System.out.println(sObj.getObject()); 
+    } 
+}
+```
+Output:
+```
+15
+GeeksForGeeks
+```
+2. Generic Functions
+```
+class Test { 
+    // A Generic method example 
+    static <T> void genericDisplay (T element){ 
+        System.out.println(element.getClass().getName() + " = " + element); 
+    } 
+    
+    //...
+}
+```
+```
+public static void main(String[] args) { 
+    genericDisplay(11); 
+    genericDisplay("GeeksForGeeks"); 
+    genericDisplay(1.0); 
+} 
+```
+Output:
+```
+java.lang.Integer = 11
+java.lang.String = GeeksForGeeks
+java.lang.Double = 1.0
+```
