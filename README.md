@@ -39,14 +39,25 @@ for (String str : counts) {
 }
 ```
 - Autoboxing/Unboxing
-Can put primitive type values into collections
+Autoboxing : convert primitive type into wrapper oUnbject.
+Can put primitive type values into collections.
+
+example:
 ```java
-List list = new ArrayList();
-list.add(10);
-list.add(10.5);
-for (Object obj : list) {
-  System.out.println(obj);
+List<Integer> li = new ArrayList<Integer>();
+for(int i=0;i < 20; i++){
+    li.add(i);
 }
+```
+Unboxing : convert wrapper type into primitive type.
+
+
+example
+```
+List<Double> ld = new ArrayList<Double>();
+ld.add(3.14);
+
+double pi = ld.get(0);
 ```
 - Variable Length Argument List
 Can use multi parameters with same type
@@ -57,7 +68,7 @@ exampleVariableLengthArgumentList("1","2","3");
 ```
 ```java
 private void exampleVariableLengthArgumentList(String... parameters) {
-  for (String str : parameters) {
+  for (String str : parameters)
     System.out.println("Paramters:-" + str);
   }
   System.out.println("");
